@@ -3,8 +3,21 @@ plugins {
     id 'com.android.application' version '7.1.2' apply false
     id 'com.android.library' version '7.1.2' apply false
     id 'org.jetbrains.kotlin.android' version '1.6.10' apply false
+    id 'maven-publish' apply true
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+afterEvaluate {
+    publishing{
+        publications{
+            release(MavenPublication){
+                groupId = 'com.github.m-ohit-s'
+                artifactId = 'maven-sdk-publishing'
+                version = '1.0'
+            }
+        }
+    }
 }
